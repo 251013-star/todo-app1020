@@ -1,4 +1,5 @@
 'use client'
+import { countRemaining } from '@/lib/todos'
 
 import { useEffect, useState } from 'react'
 import TodoFilter from './TodoFilter'
@@ -48,8 +49,8 @@ export default function TodoApp() {
   }
 
   const doneCount = todos.filter((todo) => todo.done).length
-  const remaining = todos.length - doneCount
-
+  const remaining = countRemaining(todos)
+  
   const visibleTodos =
     filter === 'active' ? todos.filter((todo) => !todo.done) : filter === 'done' ? todos.filter((todo) => todo.done) : todos
 
